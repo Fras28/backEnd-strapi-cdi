@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articulos",
+  "info": {
+    "singularName": "articulo",
+    "pluralName": "articulos",
+    "displayName": "articulo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "text"
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true
+    },
+    "quantity": {
+      "type": "biginteger"
+    },
+    "status": {
+      "type": "boolean",
+      "required": true
+    },
+    "section": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::section.section",
+      "inversedBy": "articulo"
+    }
+  }
+}
