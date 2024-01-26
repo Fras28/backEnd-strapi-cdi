@@ -707,6 +707,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     avatar: Attribute.Media;
+    comercio: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::comercio.comercio'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
