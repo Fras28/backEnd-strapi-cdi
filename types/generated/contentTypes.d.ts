@@ -857,8 +857,8 @@ export interface ApiComercioComercio extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Attribute.String & Attribute.Required & Attribute.Unique;
-    direccion: Attribute.String;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    adress: Attribute.String;
     logo: Attribute.Media;
     users_permissions_users: Attribute.Relation<
       'api::comercio.comercio',
@@ -907,7 +907,7 @@ export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Attribute.String;
+    name: Attribute.String;
     categorias: Attribute.Relation<
       'api::subcategoria.subcategoria',
       'oneToMany',

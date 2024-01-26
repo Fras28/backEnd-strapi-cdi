@@ -12,12 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nombre": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "direccion": {
+    "adress": {
       "type": "string"
     },
     "logo": {
