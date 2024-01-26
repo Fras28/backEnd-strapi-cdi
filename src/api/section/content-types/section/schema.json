@@ -26,6 +26,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::categoria.categoria"
+    },
+    "comercio": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comercio.comercio",
+      "inversedBy": "section"
     }
   }
 }

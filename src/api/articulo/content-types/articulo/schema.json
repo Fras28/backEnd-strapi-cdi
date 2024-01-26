@@ -35,6 +35,22 @@
       "relation": "oneToOne",
       "target": "api::section.section",
       "inversedBy": "articulo"
+    },
+    "comercio": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comercio.comercio",
+      "inversedBy": "articulo"
+    },
+    "picture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

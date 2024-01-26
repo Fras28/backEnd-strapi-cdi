@@ -678,7 +678,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -706,6 +705,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
+    >;
+    comercios: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::comercio.comercio'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -790,6 +794,12 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
       'oneToOne',
       'api::section.section'
     >;
+    comercio: Attribute.Relation<
+      'api::articulo.articulo',
+      'oneToOne',
+      'api::comercio.comercio'
+    >;
+    picture: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -821,6 +831,11 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
+    comercio: Attribute.Relation<
+      'api::categoria.categoria',
+      'oneToOne',
+      'api::comercio.comercio'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -857,6 +872,26 @@ export interface ApiComercioComercio extends Schema.CollectionType {
     users_permissions_users: Attribute.Relation<
       'api::comercio.comercio',
       'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    articulo: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToOne',
+      'api::articulo.articulo'
+    >;
+    categoria: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToOne',
+      'api::categoria.categoria'
+    >;
+    section: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToOne',
+      'api::section.section'
+    >;
+    user: Attribute.Relation<
+      'api::comercio.comercio',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
@@ -899,6 +934,11 @@ export interface ApiSectionSection extends Schema.CollectionType {
       'api::section.section',
       'oneToMany',
       'api::categoria.categoria'
+    >;
+    comercio: Attribute.Relation<
+      'api::section.section',
+      'oneToOne',
+      'api::comercio.comercio'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
