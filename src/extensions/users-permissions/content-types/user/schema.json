@@ -65,11 +65,13 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "comercios": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comercio.comercio",
-      "mappedBy": "user"
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

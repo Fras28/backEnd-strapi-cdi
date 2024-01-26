@@ -36,29 +36,14 @@
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user"
     },
-    "articulo": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::articulo.articulo",
-      "mappedBy": "comercio"
+    "instagram": {
+      "type": "string"
     },
-    "categoria": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::categoria.categoria",
-      "mappedBy": "comercio"
-    },
-    "section": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::section.section",
-      "mappedBy": "comercio"
-    },
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "comercios"
+    "whatsapp": {
+      "type": "biginteger",
+      "min": "9999999999",
+      "max": "9999999999999",
+      "default": "54291"
     }
   }
 }

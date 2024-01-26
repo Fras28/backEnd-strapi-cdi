@@ -30,27 +30,22 @@
       "type": "boolean",
       "required": true
     },
-    "section": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::section.section",
-      "inversedBy": "articulo"
-    },
-    "comercio": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::comercio.comercio",
-      "inversedBy": "articulo"
-    },
     "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "sub_categorias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subcategoria.subcategoria",
+      "mappedBy": "articulo"
     }
   }
 }
