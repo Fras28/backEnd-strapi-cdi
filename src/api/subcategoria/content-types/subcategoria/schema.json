@@ -18,14 +18,7 @@
     "categorias": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::categoria.categoria",
-      "mappedBy": "subcategoria"
-    },
-    "articulo": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::articulo.articulo",
-      "inversedBy": "sub_categorias"
+      "target": "api::categoria.categoria"
     }
   }
 }

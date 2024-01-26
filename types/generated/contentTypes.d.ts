@@ -822,10 +822,10 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    subcategoria: Attribute.Relation<
+    comercio: Attribute.Relation<
       'api::categoria.categoria',
-      'manyToOne',
-      'api::subcategoria.subcategoria'
+      'oneToOne',
+      'api::comercio.comercio'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -872,6 +872,11 @@ export interface ApiComercioComercio extends Schema.CollectionType {
         max: '9999999999999';
       }> &
       Attribute.DefaultTo<'54291'>;
+    categorias: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToMany',
+      'api::categoria.categoria'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -907,11 +912,6 @@ export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
       'api::subcategoria.subcategoria',
       'oneToMany',
       'api::categoria.categoria'
-    >;
-    articulo: Attribute.Relation<
-      'api::subcategoria.subcategoria',
-      'manyToOne',
-      'api::articulo.articulo'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

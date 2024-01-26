@@ -16,11 +16,10 @@
       "type": "string",
       "required": true
     },
-    "subcategoria": {
+    "comercio": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::subcategoria.subcategoria",
-      "inversedBy": "categorias"
+      "relation": "oneToOne",
+      "target": "api::comercio.comercio"
     }
   }
 }
