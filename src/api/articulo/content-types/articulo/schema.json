@@ -43,9 +43,9 @@
     },
     "sub_categorias": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::subcategoria.subcategoria",
-      "mappedBy": "articulo"
+      "mappedBy": "articulos"
     }
   }
 }
