@@ -73,9 +73,9 @@
         "images"
       ]
     },
-    "comercio": {
+    "comercios": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::comercio.comercio"
     }
   }

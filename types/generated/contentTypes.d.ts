@@ -707,9 +707,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     avatar: Attribute.Media;
-    comercio: Attribute.Relation<
+    comercios: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToOne',
+      'oneToMany',
       'api::comercio.comercio'
     >;
     createdAt: Attribute.DateTime;
@@ -832,6 +832,7 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
       'oneToOne',
       'api::comercio.comercio'
     >;
+    picture: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -865,11 +866,6 @@ export interface ApiComercioComercio extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     adress: Attribute.String;
     logo: Attribute.Media;
-    users_permissions_users: Attribute.Relation<
-      'api::comercio.comercio',
-      'oneToMany',
-      'plugin::users-permissions.user'
-    >;
     instagram: Attribute.String;
     whatsapp: Attribute.BigInteger &
       Attribute.SetMinMax<{
@@ -877,10 +873,15 @@ export interface ApiComercioComercio extends Schema.CollectionType {
         max: '9999999999999';
       }> &
       Attribute.DefaultTo<'54291'>;
-    categorias: Attribute.Relation<
+    admin_users: Attribute.Relation<
       'api::comercio.comercio',
       'oneToMany',
-      'api::categoria.categoria'
+      'admin::user'
+    >;
+    users_permissions_users: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -918,6 +919,7 @@ export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
       'oneToMany',
       'api::categoria.categoria'
     >;
+    picture: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
