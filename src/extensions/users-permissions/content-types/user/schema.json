@@ -65,18 +65,20 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "avatar": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "comercios": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comercio.comercio"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

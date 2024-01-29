@@ -33,9 +33,9 @@
       "target": "api::comercio.comercio",
       "inversedBy": "categorias"
     },
-    "sub_categoria": {
+    "sub_categorias": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::subcategoria.subcategoria",
       "inversedBy": "categorias"
     }

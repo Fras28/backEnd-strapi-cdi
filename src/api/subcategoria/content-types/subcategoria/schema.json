@@ -15,12 +15,6 @@
     "name": {
       "type": "string"
     },
-    "categorias": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::categoria.categoria",
-      "mappedBy": "sub_categoria"
-    },
     "picture": {
       "type": "media",
       "multiple": false,
@@ -36,6 +30,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::articulo.articulo",
+      "inversedBy": "sub_categorias"
+    },
+    "categorias": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categoria.categoria",
       "inversedBy": "sub_categorias"
     }
   }
