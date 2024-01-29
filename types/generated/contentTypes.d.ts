@@ -362,176 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticuloArticulo extends Schema.CollectionType {
-  collectionName: 'articulos';
-  info: {
-    singularName: 'articulo';
-    pluralName: 'articulos';
-    displayName: 'articulo';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    detail: Attribute.Text;
-    price: Attribute.BigInteger & Attribute.Required;
-    quantity: Attribute.BigInteger;
-    status: Attribute.Boolean & Attribute.Required;
-    picture: Attribute.Media;
-    sub_categorias: Attribute.Relation<
-      'api::articulo.articulo',
-      'oneToMany',
-      'api::subcategoria.subcategoria'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::articulo.articulo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::articulo.articulo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCategoriaCategoria extends Schema.CollectionType {
-  collectionName: 'categorias';
-  info: {
-    singularName: 'categoria';
-    pluralName: 'categorias';
-    displayName: 'categoria';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    comercio: Attribute.Relation<
-      'api::categoria.categoria',
-      'oneToOne',
-      'api::comercio.comercio'
-    >;
-    picture: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::categoria.categoria',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::categoria.categoria',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiComercioComercio extends Schema.CollectionType {
-  collectionName: 'comercios';
-  info: {
-    singularName: 'comercio';
-    pluralName: 'comercios';
-    displayName: 'comercio';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    adress: Attribute.String;
-    logo: Attribute.Media;
-    instagram: Attribute.String;
-    whatsapp: Attribute.BigInteger &
-      Attribute.SetMinMax<{
-        min: '9999999999';
-        max: '9999999999999';
-      }> &
-      Attribute.DefaultTo<'54291'>;
-    admin_users: Attribute.Relation<
-      'api::comercio.comercio',
-      'oneToMany',
-      'admin::user'
-    >;
-    users_permissions_users: Attribute.Relation<
-      'api::comercio.comercio',
-      'oneToMany',
-      'plugin::users-permissions.user'
-    >;
-    categoria: Attribute.Relation<
-      'api::comercio.comercio',
-      'oneToOne',
-      'api::categoria.categoria'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::comercio.comercio',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::comercio.comercio',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
-  collectionName: 'subcategorias';
-  info: {
-    singularName: 'subcategoria';
-    pluralName: 'subcategorias';
-    displayName: 'SubCategoria';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    categorias: Attribute.Relation<
-      'api::subcategoria.subcategoria',
-      'oneToMany',
-      'api::categoria.categoria'
-    >;
-    picture: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::subcategoria.subcategoria',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::subcategoria.subcategoria',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -943,6 +773,186 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticuloArticulo extends Schema.CollectionType {
+  collectionName: 'articulos';
+  info: {
+    singularName: 'articulo';
+    pluralName: 'articulos';
+    displayName: 'articulo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    detail: Attribute.Text;
+    price: Attribute.BigInteger & Attribute.Required;
+    quantity: Attribute.BigInteger;
+    status: Attribute.Boolean & Attribute.Required;
+    picture: Attribute.Media;
+    sub_categorias: Attribute.Relation<
+      'api::articulo.articulo',
+      'oneToMany',
+      'api::subcategoria.subcategoria'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::articulo.articulo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::articulo.articulo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoriaCategoria extends Schema.CollectionType {
+  collectionName: 'categorias';
+  info: {
+    singularName: 'categoria';
+    pluralName: 'categorias';
+    displayName: 'categoria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    picture: Attribute.Media;
+    comercio: Attribute.Relation<
+      'api::categoria.categoria',
+      'manyToOne',
+      'api::comercio.comercio'
+    >;
+    sub_categoria: Attribute.Relation<
+      'api::categoria.categoria',
+      'manyToOne',
+      'api::subcategoria.subcategoria'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categoria.categoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categoria.categoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiComercioComercio extends Schema.CollectionType {
+  collectionName: 'comercios';
+  info: {
+    singularName: 'comercio';
+    pluralName: 'comercios';
+    displayName: 'comercio';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    adress: Attribute.String;
+    logo: Attribute.Media;
+    instagram: Attribute.String;
+    whatsapp: Attribute.BigInteger &
+      Attribute.SetMinMax<{
+        min: '9999999999';
+        max: '9999999999999';
+      }> &
+      Attribute.DefaultTo<'54291'>;
+    admin_users: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToMany',
+      'admin::user'
+    >;
+    users_permissions_users: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    categorias: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToMany',
+      'api::categoria.categoria'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
+  collectionName: 'subcategorias';
+  info: {
+    singularName: 'subcategoria';
+    pluralName: 'subcategorias';
+    displayName: 'SubCategoria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    categorias: Attribute.Relation<
+      'api::subcategoria.subcategoria',
+      'oneToMany',
+      'api::categoria.categoria'
+    >;
+    picture: Attribute.Media;
+    articulo: Attribute.Relation<
+      'api::subcategoria.subcategoria',
+      'manyToOne',
+      'api::articulo.articulo'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subcategoria.subcategoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subcategoria.subcategoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -953,10 +963,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::articulo.articulo': ApiArticuloArticulo;
-      'api::categoria.categoria': ApiCategoriaCategoria;
-      'api::comercio.comercio': ApiComercioComercio;
-      'api::subcategoria.subcategoria': ApiSubcategoriaSubcategoria;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -965,6 +971,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::articulo.articulo': ApiArticuloArticulo;
+      'api::categoria.categoria': ApiCategoriaCategoria;
+      'api::comercio.comercio': ApiComercioComercio;
+      'api::subcategoria.subcategoria': ApiSubcategoriaSubcategoria;
     }
   }
 }

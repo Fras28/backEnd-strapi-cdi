@@ -50,11 +50,11 @@
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user"
     },
-    "categoria": {
+    "categorias": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::categoria.categoria",
-      "inversedBy": "comercio"
+      "mappedBy": "comercio"
     }
   }
 }

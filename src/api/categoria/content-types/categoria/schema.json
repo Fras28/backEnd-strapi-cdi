@@ -16,12 +16,6 @@
       "type": "string",
       "required": true
     },
-    "comercio": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::comercio.comercio",
-      "inversedBy": "categoria"
-    },
     "picture": {
       "type": "media",
       "multiple": false,
@@ -32,6 +26,18 @@
         "videos",
         "audios"
       ]
+    },
+    "comercio": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comercio.comercio",
+      "inversedBy": "categorias"
+    },
+    "sub_categoria": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subcategoria.subcategoria",
+      "inversedBy": "categorias"
     }
   }
 }

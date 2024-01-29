@@ -18,17 +18,25 @@
     "categorias": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::categoria.categoria"
+      "target": "api::categoria.categoria",
+      "mappedBy": "sub_categoria"
     },
     "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "articulo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::articulo.articulo",
+      "inversedBy": "sub_categorias"
     }
   }
 }
