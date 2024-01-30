@@ -782,6 +782,8 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
     description: '';
   };
   options: {
+    timestamps: false;
+    increments: false;
     draftAndPublish: true;
   };
   attributes: {
@@ -791,10 +793,20 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
     quantity: Attribute.BigInteger;
     status: Attribute.Boolean & Attribute.Required;
     picture: Attribute.Media;
-    sub_categorias: Attribute.Relation<
+    sub_categoria: Attribute.Relation<
+      'api::articulo.articulo',
+      'manyToOne',
+      'api::subcategoria.subcategoria'
+    >;
+    comercio: Attribute.Relation<
+      'api::articulo.articulo',
+      'manyToOne',
+      'api::comercio.comercio'
+    >;
+    categorias: Attribute.Relation<
       'api::articulo.articulo',
       'manyToMany',
-      'api::subcategoria.subcategoria'
+      'api::categoria.categoria'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -837,6 +849,11 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
       'api::categoria.categoria',
       'manyToMany',
       'api::subcategoria.subcategoria'
+    >;
+    articulos: Attribute.Relation<
+      'api::categoria.categoria',
+      'manyToMany',
+      'api::articulo.articulo'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -893,6 +910,11 @@ export interface ApiComercioComercio extends Schema.CollectionType {
       'oneToMany',
       'api::categoria.categoria'
     >;
+    articulos: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToMany',
+      'api::articulo.articulo'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -932,7 +954,7 @@ export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
     >;
     articulos: Attribute.Relation<
       'api::subcategoria.subcategoria',
-      'manyToMany',
+      'oneToMany',
       'api::articulo.articulo'
     >;
     createdAt: Attribute.DateTime;

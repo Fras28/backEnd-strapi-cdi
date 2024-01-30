@@ -8,6 +8,8 @@
     "description": ""
   },
   "options": {
+    "timestamps": false,
+    "increments": false,
     "draftAndPublish": true
   },
   "pluginOptions": {},
@@ -41,11 +43,23 @@
         "audios"
       ]
     },
-    "sub_categorias": {
+    "sub_categoria": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subcategoria.subcategoria",
+      "inversedBy": "articulos"
+    },
+    "comercio": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comercio.comercio",
+      "inversedBy": "articulos"
+    },
+    "categorias": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::subcategoria.subcategoria",
-      "mappedBy": "articulos"
+      "target": "api::categoria.categoria",
+      "inversedBy": "articulos"
     }
   }
 }

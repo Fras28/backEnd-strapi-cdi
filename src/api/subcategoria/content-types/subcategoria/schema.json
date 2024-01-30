@@ -30,13 +30,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::categoria.categoria",
-      "inversedBy": "sub_categorias"
+      "mappedBy": "sub_categorias"
     },
     "articulos": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::articulo.articulo",
-      "inversedBy": "sub_categorias"
+      "mappedBy": "sub_categoria"
     }
   }
 }

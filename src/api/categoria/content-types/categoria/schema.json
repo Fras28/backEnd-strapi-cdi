@@ -38,6 +38,12 @@
       "relation": "manyToMany",
       "target": "api::subcategoria.subcategoria",
       "inversedBy": "categorias"
+    },
+    "articulos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::articulo.articulo",
+      "mappedBy": "categorias"
     }
   }
 }
