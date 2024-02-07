@@ -79,6 +79,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "articulo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::articulo.articulo",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

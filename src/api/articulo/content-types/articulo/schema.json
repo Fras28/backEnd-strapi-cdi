@@ -8,8 +8,6 @@
     "description": ""
   },
   "options": {
-    "timestamps": false,
-    "increments": false,
     "draftAndPublish": true
   },
   "pluginOptions": {},
@@ -60,6 +58,12 @@
       "relation": "manyToMany",
       "target": "api::categoria.categoria",
       "inversedBy": "articulos"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "articulo"
     }
   }
 }
