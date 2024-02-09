@@ -27,12 +27,6 @@
         "audios"
       ]
     },
-    "comercio": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::comercio.comercio",
-      "inversedBy": "categorias"
-    },
     "sub_categorias": {
       "type": "relation",
       "relation": "manyToMany",
@@ -44,6 +38,12 @@
       "relation": "manyToMany",
       "target": "api::articulo.articulo",
       "mappedBy": "categorias"
+    },
+    "comercio": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comercio.comercio",
+      "inversedBy": "categoria"
     }
   }
 }

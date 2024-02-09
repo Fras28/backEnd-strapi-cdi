@@ -756,11 +756,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::comercio.comercio'
     >;
     avatar: Attribute.Media;
-    articulo: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::articulo.articulo'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -796,11 +791,6 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
     quantity: Attribute.BigInteger;
     status: Attribute.Boolean & Attribute.Required;
     picture: Attribute.Media;
-    sub_categoria: Attribute.Relation<
-      'api::articulo.articulo',
-      'manyToOne',
-      'api::subcategoria.subcategoria'
-    >;
     comercio: Attribute.Relation<
       'api::articulo.articulo',
       'manyToOne',
@@ -815,6 +805,11 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
       'api::articulo.articulo',
       'oneToOne',
       'plugin::users-permissions.user'
+    >;
+    sub_categoria: Attribute.Relation<
+      'api::articulo.articulo',
+      'oneToOne',
+      'api::subcategoria.subcategoria'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -848,11 +843,6 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     picture: Attribute.Media;
-    comercio: Attribute.Relation<
-      'api::categoria.categoria',
-      'manyToOne',
-      'api::comercio.comercio'
-    >;
     sub_categorias: Attribute.Relation<
       'api::categoria.categoria',
       'manyToMany',
@@ -862,6 +852,11 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
       'api::categoria.categoria',
       'manyToMany',
       'api::articulo.articulo'
+    >;
+    comercio: Attribute.Relation<
+      'api::categoria.categoria',
+      'oneToOne',
+      'api::comercio.comercio'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -923,6 +918,16 @@ export interface ApiComercioComercio extends Schema.CollectionType {
       'oneToMany',
       'api::articulo.articulo'
     >;
+    sub_categoria: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToOne',
+      'api::subcategoria.subcategoria'
+    >;
+    categoria: Attribute.Relation<
+      'api::comercio.comercio',
+      'oneToOne',
+      'api::categoria.categoria'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -934,6 +939,40 @@ export interface ApiComercioComercio extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::comercio.comercio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Status: Attribute.String & Attribute.Required;
+    Order_id: Attribute.BigInteger & Attribute.Required;
+    Paymen_total: Attribute.BigInteger & Attribute.Required;
+    Payment_id: Attribute.UID & Attribute.Required;
+    Payment_type: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
       'oneToOne',
       'admin::user'
     > &
@@ -960,10 +999,15 @@ export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
       'manyToMany',
       'api::categoria.categoria'
     >;
-    articulos: Attribute.Relation<
+    articulo: Attribute.Relation<
       'api::subcategoria.subcategoria',
-      'oneToMany',
+      'oneToOne',
       'api::articulo.articulo'
+    >;
+    comercio: Attribute.Relation<
+      'api::subcategoria.subcategoria',
+      'oneToOne',
+      'api::comercio.comercio'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1004,6 +1048,7 @@ declare module '@strapi/types' {
       'api::articulo.articulo': ApiArticuloArticulo;
       'api::categoria.categoria': ApiCategoriaCategoria;
       'api::comercio.comercio': ApiComercioComercio;
+      'api::order.order': ApiOrderOrder;
       'api::subcategoria.subcategoria': ApiSubcategoriaSubcategoria;
     }
   }

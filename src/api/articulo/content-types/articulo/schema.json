@@ -41,12 +41,6 @@
         "audios"
       ]
     },
-    "sub_categoria": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::subcategoria.subcategoria",
-      "inversedBy": "articulos"
-    },
     "comercio": {
       "type": "relation",
       "relation": "manyToOne",
@@ -62,8 +56,13 @@
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "articulo"
+      "target": "plugin::users-permissions.user"
+    },
+    "sub_categoria": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subcategoria.subcategoria",
+      "mappedBy": "articulo"
     }
   }
 }

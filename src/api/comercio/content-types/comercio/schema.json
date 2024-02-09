@@ -53,13 +53,24 @@
     "categorias": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::categoria.categoria",
-      "mappedBy": "comercio"
+      "target": "api::categoria.categoria"
     },
     "articulos": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::articulo.articulo",
+      "mappedBy": "comercio"
+    },
+    "sub_categoria": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subcategoria.subcategoria",
+      "mappedBy": "comercio"
+    },
+    "categoria": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::categoria.categoria",
       "mappedBy": "comercio"
     }
   }
