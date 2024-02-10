@@ -41,27 +41,27 @@
         "audios"
       ]
     },
-    "comercio": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::comercio.comercio",
-      "inversedBy": "articulos"
-    },
-    "categorias": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::categoria.categoria",
-      "inversedBy": "articulos"
-    },
-    "users_permissions_user": {
+    "admin_user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "admin::user"
+    },
+    "comercio": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comercio.comercio",
+      "inversedBy": "articulo"
     },
     "sub_categoria": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::subcategoria.subcategoria",
+      "inversedBy": "articulo"
+    },
+    "categorias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categoria.categoria",
       "mappedBy": "articulo"
     }
   }
