@@ -26,23 +26,11 @@
         "audios"
       ]
     },
-    "categorias": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::categoria.categoria",
-      "mappedBy": "sub_categorias"
-    },
     "articulo": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::articulo.articulo",
-      "inversedBy": "sub_categoria"
-    },
-    "comercio": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::comercio.comercio",
-      "inversedBy": "sub_categoria"
+      "mappedBy": "sub_categoria"
     }
   }
 }

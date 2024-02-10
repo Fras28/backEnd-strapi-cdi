@@ -50,27 +50,10 @@
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user"
     },
-    "categorias": {
+    "articulo": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::categoria.categoria"
-    },
-    "articulos": {
-      "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::articulo.articulo",
-      "mappedBy": "comercio"
-    },
-    "sub_categoria": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::subcategoria.subcategoria",
-      "mappedBy": "comercio"
-    },
-    "categoria": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::categoria.categoria",
       "mappedBy": "comercio"
     }
   }
