@@ -30,13 +30,8 @@
     "articulos": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::articulo.articulo"
-    },
-    "articulo": {
-      "type": "relation",
-      "relation": "manyToOne",
       "target": "api::articulo.articulo",
-      "inversedBy": "categorias"
+      "mappedBy": "categorias"
     }
   }
 }

@@ -26,9 +26,9 @@
         "audios"
       ]
     },
-    "articulo": {
+    "articulos": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::articulo.articulo",
       "mappedBy": "sub_categoria"
     }

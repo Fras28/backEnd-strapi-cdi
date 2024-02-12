@@ -54,15 +54,15 @@
     },
     "sub_categoria": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::subcategoria.subcategoria",
-      "inversedBy": "articulo"
+      "inversedBy": "articulos"
     },
     "categorias": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::categoria.categoria",
-      "mappedBy": "articulo"
+      "inversedBy": "articulos"
     }
   }
 }

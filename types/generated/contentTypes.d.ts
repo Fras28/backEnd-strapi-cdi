@@ -808,12 +808,12 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
     >;
     sub_categoria: Attribute.Relation<
       'api::articulo.articulo',
-      'oneToOne',
+      'manyToOne',
       'api::subcategoria.subcategoria'
     >;
     categorias: Attribute.Relation<
       'api::articulo.articulo',
-      'oneToMany',
+      'manyToOne',
       'api::categoria.categoria'
     >;
     createdAt: Attribute.DateTime;
@@ -851,11 +851,6 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
     articulos: Attribute.Relation<
       'api::categoria.categoria',
       'oneToMany',
-      'api::articulo.articulo'
-    >;
-    articulo: Attribute.Relation<
-      'api::categoria.categoria',
-      'manyToOne',
       'api::articulo.articulo'
     >;
     createdAt: Attribute.DateTime;
@@ -979,9 +974,9 @@ export interface ApiSubcategoriaSubcategoria extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     picture: Attribute.Media;
-    articulo: Attribute.Relation<
+    articulos: Attribute.Relation<
       'api::subcategoria.subcategoria',
-      'oneToOne',
+      'oneToMany',
       'api::articulo.articulo'
     >;
     createdAt: Attribute.DateTime;
