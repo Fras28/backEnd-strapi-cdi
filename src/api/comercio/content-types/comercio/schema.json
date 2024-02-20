@@ -40,9 +40,9 @@
       "max": "9999999999999",
       "default": "54291"
     },
-    "admin_users": {
+    "admin_user": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "admin::user"
     },
     "users_permissions_users": {

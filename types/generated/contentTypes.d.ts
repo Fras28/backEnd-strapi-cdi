@@ -893,9 +893,9 @@ export interface ApiComercioComercio extends Schema.CollectionType {
         max: '9999999999999';
       }> &
       Attribute.DefaultTo<'54291'>;
-    admin_users: Attribute.Relation<
+    admin_user: Attribute.Relation<
       'api::comercio.comercio',
-      'oneToMany',
+      'oneToOne',
       'admin::user'
     >;
     users_permissions_users: Attribute.Relation<
